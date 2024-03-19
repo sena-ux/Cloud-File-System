@@ -17,7 +17,7 @@ def register(username_val, password_val, window, self):
     sheet = workbook['user']
     sheet.append(new_row)
     workbook.save("CloudFileSystem.xlsx")
-    middleware.middleware(selft, window)
+    middleware.middleware(self, window)
     # Melakukan sesuatu dengan nilai yang diperoleh
     messagebox.showinfo(title='Success', message=f'Registration Successful with username {username_val} and password {password_val}')
     
