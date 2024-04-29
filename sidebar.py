@@ -47,12 +47,12 @@ def show_sidebar(self, window):
     # MENU 1 
     iconDashboard = Image.open('images\\dashboard1.png')
     icon1 = ImageTk.PhotoImage(iconDashboard)
-    iconDashboard1 = Button(window, image=icon1, bg='#ffffff', command=lambda: show_page('dashboard', window), cursor='hand2', bd=0)
+    iconDashboard1 = Button(window, image=icon1, bg='#ffffff', command=lambda: show_page(self, 'dashboard', window), cursor='hand2', bd=0)
     iconDashboard1.image = icon1
     iconDashboard1.place(x=40, y=260)
     
     # button
-    labelDashboard = Button(window, text='Dashboard', bg='#ffffff', font=('', 13, 'bold'), bd=0, fg='black', width=15, cursor='hand2', command=lambda: show_page('dashboard', window))
+    labelDashboard = Button(window, text='Dashboard', bg='#ffffff', font=('', 13, 'bold'), bd=0, fg='black', width=15, cursor='hand2', command=lambda: show_page(self, 'dashboard', window))
     labelDashboard.place(x=80, y=260)
     
     
@@ -64,18 +64,18 @@ def show_sidebar(self, window):
     # MENU 2 
     iconFile = Image.open('images\\file1.png')
     iconFile1 = ImageTk.PhotoImage(iconFile)
-    iconFile = Button(window, image=iconFile1, bg='#ffffff', command=lambda: show_page('file', window), cursor='hand2', bd=0)
+    iconFile = Button(window, image=iconFile1, bg='#ffffff', command=lambda: show_page(self, 'file', window), cursor='hand2', bd=0)
     iconFile.image = iconFile1
     iconFile.place(x=40, y=300)
     
     # Label
-    labelDashboard = Button(window, text='File', font=('', 13, 'bold'), bg='#ffffff',bd=0, cursor='hand2', width=15, justify='left', command=lambda: show_page('file', window))
+    labelDashboard = Button(window, text='File', font=('', 13, 'bold'), bg='#ffffff',bd=0, cursor='hand2', width=15, justify='left', command=lambda: show_page(self, 'file', window))
     labelDashboard.place(x=80, y=300)
     
     
-def show_page(page, window):
+def show_page(self, page, window):
     if page == 'dashboard':
-        dashboardModule.show_dashboard(window)
+        dashboardModule.show_dashboard(self, window)
     elif page == 'file':
         fileModule.show_file_menu(window)
 
