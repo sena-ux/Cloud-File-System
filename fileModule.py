@@ -30,11 +30,11 @@ def show_file_menu(window):
     header_insert.place(x=338, y=120)
     
     
-    insert_image_open = Image.open('images\\icons8-search-25.png')
-    insert_image_file = ImageTk.PhotoImage(insert_image_open)
-    header_insert = Button(window, image=insert_image_file, bg='#ffffff', bd=0, fg='white')
-    header_insert.image = insert_image_file
-    header_insert.place(x=370, y=120)
+    #insert_image_open = Image.open('images\\icons8-search-25.png')
+    #insert_image_file = ImageTk.PhotoImage(insert_image_open)
+    #header_insert = Button(window, image=insert_image_file, bg='#ffffff', bd=0, fg='white')
+    #header_insert.image = insert_image_file
+    #header_insert.place(x=370, y=120)
     
     # ========================== END HEADER ===================================
     
