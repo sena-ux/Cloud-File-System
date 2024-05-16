@@ -118,6 +118,10 @@ def show_file_in_directory(directory, content_frame):
             # Event 2 kali klik
             bind_double_click(button_file_image, file_path)
             
+            # Event klik kanan
+            button_file_image.bind("<Button-3>", lambda event, path=file_path: show_context_menu(event, path))
+
+            
             # Perbarui indeks baris dan kolom
             column_index += 1
             if column_index == 3:  # Jumlah kolom maksimum
@@ -128,4 +132,32 @@ def show_file_in_directory(directory, content_frame):
             button_file_image.image = file_image_file
             label.file_name = file_name
 
+
+def show_context_menu(event, file_path):
+    menu = Menu(event.widget, tearoff=0)
+    menu.add_command(label="Rename", command=lambda: rename_file(file_path))
+    menu.add_command(label="Delete", command=lambda: delete_file(file_path))
+    menu.tk_popup(event.x_root, event.y_root)
+
+def rename_file(file_path):
+    directory = os.path.dirname(file_path)
+    old_file_name = os.path.basename(file_path)
+    new_file_name = simpledialog.askstring("Rename File", "Enter new name:", initialvalue=old_file_name)
+    
+    if new_file_name:
+        new_file_path = os.path.join(directory, new_file_name)
+        try:
+            os.rename(file_path, new_file_path)
+            messagebox.showinfo("Renamed", f"'{old_file_name}' has been renamed to '{new_file_name}'.")
+        except Exception as e:
+            messagebox.showerror("Error", f"Error renaming file: {e}")
+
+def delete_file(file_path):
+    response = messagebox.askyesno("Confirm Delete", f"Are you sure you want to delete '{os.path.basename(file_path)}'?")
+    if response:
+        try:
+            os.remove(file_path)
+            messagebox.showinfo("Deleted", f"'{os.path.basename(file_path)}' has been deleted.")
+        except Exception as e:
+            messagebox.showerror("Error", f"Error deleting file: {e}")
 

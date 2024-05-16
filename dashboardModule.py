@@ -26,7 +26,6 @@ def show_dashboard(self, window):
     directory = 'file\\system'
     file_count = count_files_in_directory(directory)
     image_count, video_count = count_images_and_videos(directory)
-    print(file_count, image_count, video_count)
     
     # Panel Body
     header = Frame(window)
